@@ -81,11 +81,12 @@ For technology-specific questions, best practices, testing guidance, and design:
 
 ### Step 5: Submit for Review
 Once implementation is complete:
+- **Update task status to `ready for review`** in your task file
 - Summarize what was implemented
 - Note any deviations from the spec (with justification)
 - Highlight areas you're uncertain about
 - Hand off to **Rick** for code review
-- **Note**: Rick will update task status to `reviewing`
+- **Note**: Rick will update task status to `reviewing` when he picks it up
 
 ## Coding Standards
 
