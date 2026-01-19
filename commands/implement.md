@@ -25,7 +25,7 @@ $ARGUMENTS
 - **Teddy** (PM Agent): Clarifies requirements, generates feature specs
 - **Kenji** (Tech Lead - Design): Creates technical breakdowns, designs, and parallel execution plans
 - **Andy** (Developer): Implements the code - up to 4 instances can work in parallel on independent tasks
-- **Rick** (Tech Lead - Review): Reviews code for quality and best practices
+- **Rick** (CTO - Review): Reviews code for quality and best practices
 
 ### Specialists (Available for Consultation)
 - **Kenchan**: React specialist
@@ -105,52 +105,53 @@ Create and store all artifacts in:
    - Assign specific task file(s) to each Andy (e.g., `task-1.md`)
    - Andy reads only their assigned task file(s)
 10. Andy updates task status to `in progress` in their task file
-11. Wait for wave completion before starting dependent tasks
-12. Track progress across all Andy instances
+11. When Andy completes implementation, updates task status to `ready for review`
+12. Wait for wave completion before starting dependent tasks
+13. Track progress across all Andy instances
 
 ### Phase 4: Code Review
-13. Invoke **Rick** to review all implementations
+14. Invoke **Rick** to review tasks marked as `ready for review`
     - Rick reads the specific task file(s) for context
-14. Rick updates task status to `reviewing` in the task file
-15. If changes requested: loop back to Andy for fixes
-16. If approved: Rick updates task status to `completed` in the task file
-17. Save review notes to `review-notes.md`
+15. Rick updates task status to `reviewing` in the task file
+16. If changes requested: loop back to Andy for fixes (task stays `reviewing`)
+17. If approved: Rick updates task status to `completed` in the task file
+18. Save review notes to `review-notes.md`
 
 ### Phase 5: Verification & Ship
-18. Ask human to verify the implementation:
+19. Ask human to verify the implementation:
     - Review the implemented feature
     - Test the functionality
     - Confirm the implementation meets requirements
     - Identify any issues, follow-up tasks, or improvements needed
 
-19. Based on human feedback:
-    - **If code changes required**: Start the fix loop (go to step 20)
-    - **If only documentation/follow-ups needed**: Document them for future work (go to step 24)
-    - **If verified complete**: Mark the feature as ready to ship (go to step 24)
+20. Based on human feedback:
+    - **If code changes required**: Start the fix loop (go to step 21)
+    - **If only documentation/follow-ups needed**: Document them for future work (go to step 25)
+    - **If verified complete**: Mark the feature as ready to ship (go to step 25)
 
-20. **Fix Loop - Problem Identification**:
+21. **Fix Loop - Problem Identification**:
     - Invoke **Kenji** to analyze the issues identified by human
     - Kenji creates/updates task files for the fixes needed
     - Present fix plan to human for approval
     - Wait for human approval before proceeding
 
-21. **Fix Loop - Implementation**:
+22. **Fix Loop - Implementation**:
     - Invoke **Andy** instance(s) to implement the fixes
     - Andy reads assigned task file(s) and updates status to `in progress`
     - Andy implements the required changes
 
-22. **Fix Loop - Code Review**:
+23. **Fix Loop - Code Review**:
     - Invoke **Rick** to review the fixes
     - Rick reads task file(s) and updates status to `reviewing`
-    - If changes requested: loop back to Andy (step 21)
+    - If changes requested: loop back to Andy (step 22)
     - If approved: Rick updates task status to `completed`
 
-23. **Fix Loop - Re-verification**:
-    - Return to step 18 (human verification)
+24. **Fix Loop - Re-verification**:
+    - Return to step 19 (human verification)
     - Loop continues until human confirms no more code changes needed
 
-24. Document any remaining follow-up tasks for future work
-25. Mark the feature as ready to ship
+25. Document any remaining follow-up tasks for future work
+26. Mark the feature as ready to ship
 
 ## Communication Style
 
@@ -173,7 +174,7 @@ If any phase is blocked or requires human decision, clearly communicate:
 
 ## Verification Loop Notes
 
-- The verification loop (Phase 5, steps 18-23) ensures human satisfaction
+- The verification loop (Phase 5, steps 19-24) ensures human satisfaction
 - Each iteration goes through full cycle: Kenji → Andy → Rick → Human
 - Loop continues until human confirms no more code changes needed
 - Non-code follow-ups are documented but don't trigger the loop
