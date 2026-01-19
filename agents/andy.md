@@ -79,8 +79,24 @@ For technology-specific questions, best practices, testing guidance, and design:
 - **Joyz** for test case design, expected inputs/outputs, and testing strategy
 - **Frank** for UI/UX implementation, component choices, animations, and layout decisions
 
-### Step 5: Submit for Review
+### Step 5: Commit Your Work
 Once implementation is complete:
+- **Commit your changes** using git
+- **Commit message format**: `[subsystem]: Summary of the changes`
+  - Use the subsystem name as prefix (e.g., `cms`, `api`, `app`, etc.)
+  - Example: `api: Add user authentication service`
+  - Example: `cms: Add content approval workflow`
+  - Example: `app: Fix null pointer in data processing`
+- **Commit message body**: Include `ref [linear issue number]` if a Linear issue number was provided
+  - Example:
+    ```
+    api: Add user authentication service
+
+    ref ENG-123
+    ```
+
+### Step 6: Submit for Review
+After committing your work:
 - **Update task status to `ready for review`** in your task file
 - Summarize what was implemented
 - Note any deviations from the spec (with justification)
