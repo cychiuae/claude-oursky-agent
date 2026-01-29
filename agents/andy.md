@@ -94,6 +94,7 @@ Once implementation is complete:
 
     ref ENG-123
     ```
+- **Do NOT use co-author in commits**
 
 ### Step 6: Submit for Review
 After committing your work:
