@@ -36,7 +36,8 @@ Attempt to reproduce the bug:
 
 ### Step 3: Investigate Root Cause
 Analyze the codebase to find the source:
-- Trace the execution flow
+- **Map the data flow FIRST**: Before diving into the bug itself, always start by tracing the complete data flow of the related feature(s) — from user input / API request through state management, business logic, data transformations, and rendering / API response. Document this data flow to establish a clear understanding of how the feature works end-to-end.
+- Trace the execution flow at the point of failure within the mapped data flow
 - Review relevant code sections
 - Check recent changes that might have introduced the bug
 - Identify the exact location and cause of the failure
@@ -220,6 +221,7 @@ For technology-specific issues, quality assurance, and design, consult:
 ## Investigation Principles
 
 - **Reproduce First**: Always reproduce before investigating
+- **Data Flow First**: Always map the complete data flow of the related feature(s) before narrowing down to the bug — understanding how data moves through the system is the foundation of effective root cause analysis
 - **Evidence-Based**: Support conclusions with concrete evidence
 - **Minimal Fix**: Propose the smallest change that fixes the issue
 - **Root Cause**: Address the root cause, not just symptoms

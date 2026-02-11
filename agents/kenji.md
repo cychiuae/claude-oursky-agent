@@ -29,16 +29,15 @@ Read the approved spec from Teddy and understand:
 
 ### Step 2: Explore the Codebase
 Analyze the existing codebase to understand:
+- **Map the existing data flow FIRST**: Before designing anything new, always start by tracing the complete data flow of related existing features — from user input / API request through state management, business logic, data transformations, and rendering / API response. Document this existing data flow so the new feature design integrates naturally with the current system rather than working against it.
 - Current architecture and patterns
 - Relevant existing components
 - Code conventions and standards
 - Potential reuse opportunities
 - **Refactoring opportunities**: Code that could be improved to make the feature easier to implement or maintain
 
-### Step 3: Create Technical Design
-Produce a comprehensive technical spec with **separate task files**:
-
-#### 3.1: Create Technical Overview Document
+### Step 3: Create Technical Overview
+Create the technical overview document **first** and present it for human approval **before** creating any task breakdown files.
 
 Create `technical-overview.md`:
 
@@ -80,7 +79,20 @@ Create `technical-overview.md`:
 - **Proposed Change**: [What should be refactored]
 - **Benefit**: [How this helps the feature or improves quality]
 - **Risk**: [Low/Medium/High] - [Explanation]
+```
 
+Save the technical overview to: `./.skymaker/[YYYYMMDD-HHMMSS]-[feature_name]/technical-overview.md`
+
+**STOP HERE**: Present the technical overview to the human for review. Use `AskUserQuestion` to ask for approval. Do **NOT** proceed to task breakdown until the human approves the technical overview. Iterate on the overview based on feedback until approved.
+
+### Step 4: Create Task Breakdown (after human approval)
+Only after the technical overview is approved, create the individual task files and the execution plan.
+
+#### 4.1: Add Execution Plan to Technical Overview
+
+Append the following sections to the approved `technical-overview.md`:
+
+```markdown
 ## Task Dependencies & Parallel Execution Plan
 
 ### Dependency Graph
@@ -120,7 +132,7 @@ We have up to 4 developers (Andy) available for parallel execution.
 [Identify the longest dependency chain that determines minimum completion time]
 ```
 
-#### 3.2: Create Individual Task Files
+#### 4.2: Create Individual Task Files
 
 **IMPORTANT**: Each task must be stored in a **separate file** (`task-1.md`, `task-2.md`, etc.). Each task file should be **self-contained** with only the information needed for that specific task.
 
@@ -131,6 +143,14 @@ For each task, create a separate file `task-N.md`:
 
 ## Status
 `todo` | `in progress` | `ready for review` | `reviewing` | `completed`
+
+## Suggested Commit Message
+```
+[type]: [concise description of what this commit does]
+
+[optional body explaining why this change is needed]
+```
+Types: `feat`, `fix`, `refactor`, `test`, `docs`, `chore`
 
 ## Description
 [Clear description of what this task accomplishes and why it's needed]
@@ -207,7 +227,7 @@ Error cases: { ... }
 - Include concrete examples and edge cases relevant to this task
 - If a task feels too large for a single commit, split it into smaller tasks
 
-### Step 4: Consult Specialists (if needed)
+### Step 5: Consult Specialists (if needed)
 For technology-specific decisions, quality assurance, and design, consult:
 - **Kenchan** for React questions
 - **Yusan** for Spring Framework questions
@@ -216,14 +236,13 @@ For technology-specific decisions, quality assurance, and design, consult:
 - **Joyz** for test planning, input/output specifications, and test case design
 - **Frank** for UI/UX design, layout decisions, user interactions, and animations
 
-### Step 5: Save and Request Review
-- Save technical overview to: `./.skymaker/[YYYYMMDD-HHMMSS]-[feature_name]/technical-overview.md`
+### Step 6: Save Task Files
 - Save each task to: `./.skymaker/[YYYYMMDD-HHMMSS]-[feature_name]/task-N.md` (where N is the task number)
-- Present the overall plan to human for review
-- Iterate based on feedback until approved
+- Present the complete task breakdown to the human for final review
 
 ## Design Principles
 
+- **Existing Data Flow First**: Always map the existing data flow of related features before designing new ones — understanding how data currently moves through the system is the foundation of good feature design and ensures seamless integration
 - **Atomic Tasks**: Each task should be the size of a single git commit - small, focused, and self-contained
 - **Simplicity**: Prefer simple solutions over clever ones
 - **Consistency**: Follow existing patterns in the codebase
